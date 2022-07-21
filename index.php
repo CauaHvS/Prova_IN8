@@ -1,6 +1,5 @@
 <?php
 require("db/conexao.php");
-
 //selecionar tabela
 $sql = $pdo->prepare("SELECT * FROM cadastros");
 $sql->execute();
@@ -128,17 +127,57 @@ function limpaPost($valor)
                                     <button name="cadastrar">CADASTRAR</button>
                                 </div>
                             </fieldsets>
-                            <?php
-                            if (isset($_POST['cadastrar'])) {
-                                $nome = $_POST['nome'];
-                                $email = $_POST['email'];
-                                $nascimento = $_POST['nascimento'];
-                                $telefone = $_POST['telefone'];
 
-                                $sql = $pdo->prepare("INSERT INTO cadastros VALUES (null,?,?,?,?)");
+                            <?php
+                            if (isset($_POST['cadastrar']) && isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['nascimento']) && isset($_POST['telefone'])) {
+                                $nome = limparPost($_POST['nome']);
+                                $email = limparPost($_POST['email']);
+                                $nascimento = limparPost($_POST['nascimento']);
+                                $telefone = limparPost($_POST['telefone']);
+
+                                //Validação de campo vazio
+                                if ($nome == "" || $nome == null) {
+                                    echo "<p>O campo nome não pode ser vazio</p>";
+                                    exit();
+                                }
+                                if ($email == "" || $email == null) {
+                                    echo "<p>O campo nome não pode ser vazio</p>";
+                                    exit();
+                                }
+                                if ($nascimento == "" || $nascimento == null) {
+                                    echo "<p>O campo nome não pode ser vazio</p>";
+                                    exit();
+                                }
+                                if ($telefone == "" || $telefone == null) {
+                                    echo "<p>O campo nome não pode ser vazio</p>";
+                                    exit();
+                                }
+
+                                //validações de dados
+
+                                if (!preg_match("/^[a-zA-Z-' ]*$/",$nome)) {
+                                    echo "<p>Somente permitido letras e espaços em branco no nome</p>";
+                                    exit();
+                                  }
+
+                                  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                                    echo "<p>Formato de email inválido</p>";
+                                    exit();
+                                  }
+
+                                $query = sprintf("SELECT nome FROM `cadastros` WHERE nome = '$nome';");
+                                $mysqli = new mysqli("$servidor", "$usuario", "", "prova_in8");
+                                $testeExiste = $mysqli->query($query);
+                                $count = mysqli_num_rows($testeExiste);
+
+                                if($count == 0){
+                                    $sql = $pdo->prepare("INSERT INTO cadastros VALUES (null,?,?,?,?)");
                                 $sql->execute(array($nome, $email, $nascimento, $telefone));
 
                                 echo "<p>Cadastrado com sucesso!</p>";
+                                }else{
+                                    echo "<br><p>Já existe um usuario com esse nome no sistema</p>";
+                                }  
                             }
                             ?>
                         </form>
@@ -163,13 +202,13 @@ function limpaPost($valor)
                             <th>NASCIMENTO</th>
                             <th>TELEFONE</th>
                         </tr>";
-                        foreach($dados as $chave => $valor){
+                        foreach ($dados as $chave => $valor) {
                             echo "<tr>
-                            <td>".$valor['id']."</td>
-                            <td>".$valor['nome']."</td>
-                            <td>".$valor['email']."</td>
-                            <td>".$valor['nascimento']."</td>
-                            <td>".$valor['telefone']."</td>
+                            <td>" . $valor['id'] . "</td>
+                            <td>" . $valor['nome'] . "</td>
+                            <td>" . $valor['email'] . "</td>
+                            <td>" . $valor['nascimento'] . "</td>
+                            <td>" . $valor['telefone'] . "</td>
                         </tr>";
                         }
                         echo "</table>";
@@ -180,7 +219,7 @@ function limpaPost($valor)
 
 
                 </div>
-                
+
             </div>
         </section>
     </main>
@@ -195,8 +234,5 @@ function limpaPost($valor)
             </div>
         </div>
     </footer>
-
-
 </body>
-
 </html>
