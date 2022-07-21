@@ -1,0 +1,206 @@
+/*Adicionando as fontes */
+ @font-face {
+    font-family: 'Helvetica 25 UltraLight Regular';
+    src: url('fonts/HelveticaUltraLt_0.ttf') format('trueType');
+}
+
+@font-face {
+    font-family: 'Helvetica Condensed';
+    src: url('fonts/ps.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto Light';
+    src: url('fonts/Roboto-Light_0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto Regular';
+    src: url('fonts/Roboto-Regular_0.ttf') format('truetype');
+}
+
+/*Resetando a formatação da pagina */
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+
+}
+
+/* Header padrão */
+header {
+    height: calc(100vh - 200px);
+    background: no-repeat center/cover url(img/index-image.jpg);
+}
+
+/* Navbar */
+nav {
+    height: 80px;
+    width: 100%;
+    padding: 0 200px;
+}
+
+nav label img {
+    width: 150px;
+    height: 80px;
+    margin: 0 5px;
+}
+
+nav ul {
+    float: right;
+    margin-right: 20px;
+}
+
+nav ul li {
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+
+nav ul span {
+    content: "\2022";
+    color: #fff;
+}
+
+
+nav ul li a {
+    color: white;
+}
+
+
+/* Conteudo do Header */
+.header-content {
+    color: #fff;
+    padding: 200px 200px;
+    font-family: 'Helvetica 25 UltraLight Regular';
+
+}
+
+.header-content h1 {
+    font-size: 55px;
+}
+
+.container-cadastro {
+    background-color: #29abe2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-form {
+    width: 500px;
+    padding: 50px;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+}
+
+
+.section-form h2 {
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 30px;
+
+}
+
+#btn{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    padding: 5px;
+    font-size: 30px;
+    border: none;
+    background-color: #012d51;
+    color: #29abe2;
+}
+
+.inputBox {
+    position: relative;
+    margin: 15px;
+}
+
+.InputUser {
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+    color: #fff;
+    font-size: 15px;
+    width: 100%;
+}
+
+.invalido{
+    background: none;
+    border: none;
+    border-bottom: 1px solid red;
+    outline: none;
+    color: #ffffff;
+    font-size: 15px;
+    width: 100%;
+}
+.erro{
+    color: #ffffff;
+}
+
+/*C onteudo Lista*/
+.container-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+}
+
+.section-list{
+    width: 500px;
+    padding: 50px;
+    top: 50%;
+    left: 50%;
+}
+.section-list h2{
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+
+table{
+    width: 500px;
+    border-collapse: collapse;
+}
+
+th,td{
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+footer {
+    height: auto;
+    background: no-repeat center/cover url(img/rodape-desktop.jpg);
+    font-family: 'Roboto Light';
+    padding-top: 40px;
+    color: #fff;
+    padding-bottom: 40px;
+
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.footer-content p {
+    max-width: 800px;
+    margin: 1px auto;
+    line-height: 28px;
+    font-size: 14px;
+}
