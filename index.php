@@ -194,7 +194,7 @@ function limpaPost($valor)
 
                     <?php
                     if (count($dados) > 0) {
-                        echo "<table id='table'>
+                        echo "<table class='table'>
                         <tr>
                             <th id='id'></th>
                             <th>NOME</th>
