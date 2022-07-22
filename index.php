@@ -176,7 +176,7 @@ function limpaPost($valor)
 
                                 echo "<p>Cadastrado com sucesso!</p>";
                                 }else{
-                                    echo "<br><p>Já existe um usuario com esse nome no sistema</p>";
+                                    echo " ";
                                 }  
                             }
                             ?>
@@ -194,9 +194,9 @@ function limpaPost($valor)
 
                     <?php
                     if (count($dados) > 0) {
-                        echo "<table>
+                        echo "<table id='table'>
                         <tr>
-                            <th></th>
+                            <th id='id'></th>
                             <th>NOME</th>
                             <th>E-MAIL</th>
                             <th>NASCIMENTO</th>
@@ -204,11 +204,11 @@ function limpaPost($valor)
                         </tr>";
                         foreach ($dados as $chave => $valor) {
                             echo "<tr>
-                            <td>" . $valor['id'] . "</td>
-                            <td>" . $valor['nome'] . "</td>
-                            <td>" . $valor['email'] . "</td>
-                            <td>" . $valor['nascimento'] . "</td>
-                            <td>" . $valor['telefone'] . "</td>
+                            <td data-label = '' class='tbId'>" . $valor['id'] . "</td>
+                            <td data-label = 'NOME'>" . $valor['nome'] . "</td>
+                            <td data-label = 'E-MAIL'>" . $valor['email'] . "</td>
+                            <td data-label = 'NASCIMENTO'>" . $valor['nascimento'] . "</td>
+                            <td data-label = 'TELEFONE'>" . $valor['telefone'] . "</td>
                         </tr>";
                         }
                         echo "</table>";

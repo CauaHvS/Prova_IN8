@@ -19,6 +19,20 @@
     src: url('fonts/Roboto-Regular_0.ttf') format('truetype');
 }
 
+/*variaveis*/
+:root {
+    --color-01: #29abe2;
+    --color-02: #012d51;
+    --color-03: #808080;
+    --color-04: #ffffff;
+
+    --fonte-helvetica-25: 'Helvetica 25 UltraLight Regular';
+    --fonte-helvetica-cond: 'Helvetica Condensed Regular';
+    --fonte-roboto-l: 'Roboto Light';
+    --fonte-roboto-r: 'Roboto Regular';
+
+}
+
 /*Resetando a formatação da pagina */
 * {
     margin: 0;
@@ -61,21 +75,25 @@ nav ul li {
 
 nav ul span {
     content: "\2022";
-    color: #fff;
+    color: var(--color-04);
 }
 
 
 nav ul li a {
-    color: white;
+    color: var(--color-04);
 }
 
 
 /* Conteudo do Header */
 .header-content {
-    color: #fff;
+    color: var(--color-04);
     padding: 200px 200px;
-    font-family: 'Helvetica 25 UltraLight Regular';
+    font-family: var(--fonte-helvetica-25);
 
+}
+
+h1, h2{
+    font-family: var(--fonte-helvetica-25);
 }
 
 .header-content h1 {
@@ -83,7 +101,7 @@ nav ul li a {
 }
 
 .container-cadastro {
-    background-color: #29abe2;
+    background-color: var(--color-01);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -115,8 +133,9 @@ button{
     padding: 5px;
     font-size: 30px;
     border: none;
-    background-color: #012d51;
-    color: #29abe2;
+    background-color: var(--color-02);
+    color: var(--color-01);
+    font-family: var(--fonte-helvetica-25);
 }
 
 .inputBox {
@@ -124,31 +143,28 @@ button{
     margin: 15px;
 }
 
+.inputBox label{
+    font-family: var(--fonte-roboto-r);
+}
+
 .InputUser {
     background: none;
     border: none;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid var(--color-04);
     outline: none;
-    color: #fff;
+    color: var(--color-04);
     font-size: 15px;
     width: 100%;
+    font-family: var(--fonte-helvetica-cond);
 }
 
-.invalido{
-    background: none;
-    border: none;
-    border-bottom: 1px solid red;
-    outline: none;
-    color: #ffffff;
-    font-size: 15px;
-    width: 100%;
-}
 .erro{
     color: #ffffff;
 }
 
 /*C onteudo Lista*/
 .container-list {
+    margin-top: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -158,27 +174,44 @@ button{
 
 .section-list{
     width: 500px;
-    padding: 50px;
-    top: 50%;
-    left: 50%;
+    margin-bottom: 50px;
+
 }
 .section-list h2{
     font-size: 25px;
     text-align: center;
     margin-bottom: 30px;
+    color: var(--color-01);
 }
 
 
 
-table{
-    width: 500px;
+#table{
+    width: 100%;
     border-collapse: collapse;
+    border: 2px solid white; 
 }
 
 th,td{
     padding: 10px;
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid var(--color-01);
+}
+
+#id{
+    font-family: var(--fonte-roboto-l);
+    
+}
+th {
+    font-family: var(--fonte-roboto-r);
+    color: var(--color-02);
+}
+.tbId{
+    color: var(--color-02);
+}
+td{
+    font-family: var(--fonte-roboto-l);
+    color: var(--color-03);
 }
 
 footer {
@@ -206,10 +239,17 @@ footer {
     font-size: 14px;
 }
 
-@media screen and (max-width: 500px) {
-    header {
-        height: calc(100vh - 50px);
-        background: no-repeat center/cover url(img/index-image-mobile.jpg);
-    }
+@media (max-width: 500px) {
 
+    
+
+    footer {
+        height: auto;
+        background: no-repeat center/cover url(img/rodape-mobile.jpg);
+        font-family: var(--fonte-roboto-l);
+        padding-top: 40px;
+        color: var(--color-04);
+        padding-bottom: 40px;
+
+    }
 }
