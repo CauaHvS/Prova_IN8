@@ -155,29 +155,31 @@ function limpaPost($valor)
 
                                 //validações de dados
 
-                                if (!preg_match("/^[a-zA-Z-' ]*$/",$nome)) {
+                                if (!preg_match("/^[a-zA-Z-' ]*$/", $nome)) {
                                     echo "<p>Somente permitido letras e espaços em branco no nome</p>";
                                     exit();
-                                  }
+                                }
 
-                                  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                                     echo "<p>Formato de email inválido</p>";
                                     exit();
-                                  }
+                                }
 
                                 $query = sprintf("SELECT nome FROM `cadastros` WHERE nome = '$nome';");
                                 $mysqli = new mysqli("$servidor", "$usuario", "", "prova_in8");
                                 $testeExiste = $mysqli->query($query);
                                 $count = mysqli_num_rows($testeExiste);
 
-                                if($count == 0){
+                                if ($count == 0) {
+                                    $data_timestamp = strtotime($nascimento);
+                                    $nascimento = date("d/m/Y", $data_timestamp);
                                     $sql = $pdo->prepare("INSERT INTO cadastros VALUES (null,?,?,?,?)");
-                                $sql->execute(array($nome, $email, $nascimento, $telefone));
+                                    $sql->execute(array($nome, $email, $nascimento, $telefone));
 
-                                echo "<p>Cadastrado com sucesso!</p>";
-                                }else{
+                                    echo "<p>Cadastrado com sucesso!</p>";
+                                } else {
                                     echo " ";
-                                }  
+                                }
                             }
                             ?>
                         </form>
@@ -203,6 +205,7 @@ function limpaPost($valor)
                             <th>TELEFONE</th>
                         </tr>";
                         foreach ($dados as $chave => $valor) {
+
                             echo "<tr>
                             <td data-label = '' class='tbId'>" . $valor['id'] . "</td>
                             <td data-label = 'NOME'>" . $valor['nome'] . "</td>
@@ -235,4 +238,5 @@ function limpaPost($valor)
         </div>
     </footer>
 </body>
+
 </html>
